@@ -10,25 +10,25 @@
 }
 
 .button-primary{
-    background-color: #0071c2;
-    border-color: #003B95;
+    background-color: #006CE4;
+    border-color: #0071c2;
     color:#FFFFFF;
 }
 
 .button-primary:hover{
     background-color: #FFFFFF;
-    color: #003B95;
+    color: #006CE4;
 }
 
 .button-secondary{
     color: #030712;
     background-color: #FFFFFF;
-    border-color: #003B95;
+    border-color: #0071c2;
 }
 
 .button-secondary:hover{
-    background-color: #0071c2;
-    border-color: #003B95;
+    background-color: #006CE4;
+    border-color: #0071c2;
     color:#FFFFFF;
 }
 
