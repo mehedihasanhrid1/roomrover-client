@@ -32,7 +32,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
         </div>
         
         <div>
-            <ul className='text-lg font-medium hidden lg:flex items-center gap-5'>
+            <ul className='text-lg xl:text-xl font-medium hidden lg:flex items-center gap-5'>
             <NavLink to="/" className={(navData) => (navData.isActive ? "text-primary border-b-2 border-[#2746E6]" : '')}>
                 <li className="">Home</li>
               </NavLink>
@@ -89,7 +89,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
         </div>
       </nav>
         <div className="lg:hidden font-medium text-xl" onClick={handleClick}>
-          <ul className={show ? "z-50 absolute -left-[500px] transition-all ease-in duration-500 bg-gray-100 dark:bg-gray-800 w-full md:w-80 py-5 px-8 rounded-md":"z-50 absolute left-0 bg-gray-100 dark:bg-gray-800 w-full md:w-80 py-5 px-8 transition-all ease-in duration-500 rounded-md"}>
+          <ul className={show ? "z-50 absolute -left-[800px] transition-all ease-in duration-500 bg-gray-100 dark:bg-gray-800 w-full md:w-80 py-5 px-8 rounded-md":"z-50 absolute left-0 bg-gray-100 dark:bg-gray-800 w-full md:w-80 py-5 px-8 transition-all ease-in duration-500 rounded-md"}>
       <NavLink to="/" className={(navData) => (navData.isActive ? "text-primary" : '')}>
                 <li className="mb-3">Home</li>
               </NavLink>
