@@ -75,13 +75,13 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                 logOut();
                 setClick(false);
               }}
-              className=' text-white px-3 md:px-6 text-sm md:text-lg py-2 button-btn rounded-lg'
+              className=' text-white px-3 md:px-4 lg:px-5 text-sm md:text-lg py-2 button-btn rounded-lg'
             >
               Log Out
             </button>
           ) : (
             <Link to="/login">
-              <button className=' text-white px-4 text-sm md:px-6 md:text-lg py-2 button-btn rounded-lg'>
+              <button className=' text-white px-4 text-sm md:px-4 lg:px-5 md:text-lg py-2 button-btn rounded-lg'>
                 Login
               </button>
             </Link>
