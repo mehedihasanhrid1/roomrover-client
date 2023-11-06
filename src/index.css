@@ -12,12 +12,12 @@
 :root {
     --clr-bg-dark: #1f2937; 
     --clr-bg-light: #ffffff; 
-  
     --clr-text-dark: #1f2937; 
     --clr-text-light: #ffffff;
     --clr-primary:#006CE4;
     --clr-secondary:#0071c2;
     --clr-btn:#0056b9;
+    --clr-btn-gray: #030712;
   }
 
 .button-primary{
@@ -41,7 +41,7 @@
 
 
 .button-secondary{
-    color: #030712;
+    color: var(--clr-btn-gray);
     background-color: var(--clr-text-light);
     border-color: var(--clr-secondary);
 }
