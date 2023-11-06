@@ -76,7 +76,7 @@ const Login = () => {
       <Helmet>
         <title>Sign In to Your Account</title>
       </Helmet>
-      <section className="mt-6 lg:mt-10 lg:mx-8">
+      <section className="my-8 lg:my-10 lg:mx-8">
         <div className="flex md:gap-12 gap-16 items-center justify-center px-6 py-8 mx-auto lg:py-0">
           <div className="hidden md:inline-block">
             <img
@@ -102,7 +102,7 @@ const Login = () => {
                     type="email"
                     name="email"
                     id="email"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#289944] focus:border-[#289944] block w-full p-2.5"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
                     placeholder="name@domain.com"
                     required
                   />
@@ -120,7 +120,7 @@ const Login = () => {
                     name="password"
                     id="password"
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#289944] focus:border-[#289944] block w-full p-2.5"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
                     required
                   />
                 </div>
@@ -140,13 +140,13 @@ const Login = () => {
 
                 <button
                   type="submit"
-                  className="w-full text-white button-primary font-medium rounded-lg px-5 py-2.5 text-center"
+                  className="w-full text-white button-btn font-medium rounded-lg px-5 py-2.5 text-center"
                 >
                   Sign in
                 </button>
                 <div className="flex items-center gap-1">
                   <hr className="h-[1.5px] bg-gray-400 border-none w-full" />
-                  <p className="text-lg text-gray-900">OR</p>
+                  <p className="md:text-lg text-gray-900">OR</p>
                   <hr className="h-[1.5px] bg-gray-400 border-none w-full" />
                 </div>
                 <div className="flex items-center justify-center gap-5">

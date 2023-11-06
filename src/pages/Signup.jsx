@@ -133,7 +133,7 @@ const Signup = () => {
                     type="name"
                     name="name"
                     id="name"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#289944] focus:border-[#289944] block w-full p-2.5"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
                     placeholder="John Smith"
                     required
                   />
@@ -149,7 +149,7 @@ const Signup = () => {
                     type="email"
                     name="email"
                     id="email"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#289944] focus:border-[#289944] block w-full p-2.5"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
                     placeholder="name@domain.com"
                     required
                   />
@@ -165,7 +165,7 @@ const Signup = () => {
                     type="text"
                     name="photourl"
                     id="photourl"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#289944] focus:border-[#289944] block w-full p-2.5"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
                     placeholder="link.imgbb.com"
                     defaultValue='https://i.ibb.co/fY089MJ/man-icon.jpg'
                   />
@@ -182,7 +182,7 @@ const Signup = () => {
                     name="password"
                     id="password"
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#289944] focus:border-[#289944] block w-full p-2.5"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
                     required
                   />
                 </div>
@@ -202,13 +202,13 @@ const Signup = () => {
 
                 <button
                   type="submit"
-                  className="w-full text-white button-primary font-medium rounded-lg px-5 py-2.5 text-center"
+                  className="w-full text-white button-btn font-medium rounded-lg px-5 py-2.5 text-center"
                 >
                   Sign Up
                 </button>
                 <div className="flex items-center gap-1">
                   <hr className="h-[1.5px] bg-gray-400 border-none w-full" />
-                  <p className="text-lg text-gray-900">OR</p>
+                  <p className="md:text-lg text-gray-900">OR</p>
                   <hr className="h-[1.5px] bg-gray-400 border-none w-full" />
                 </div>
                 <div className="flex items-center justify-center gap-5">
