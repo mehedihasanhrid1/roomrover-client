@@ -25,7 +25,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
         <div>
             <Link to="/">
             <div className='flex items-center justify-center gap-1 md:gap-2'>
-                <h2 className='text-gray-800 dark:text-white text-2xl md:text-3xl  lg:text-4xl font-bold'>Room<span className='text-primary'>{" "}Rover</span></h2>
+                <h2 className='text-gray-800 dark:text-white text-2xl md:text-3xl  lg:text-4xl font-bold lg:pl-3'>Room<span className='text-primary'>{" "}Rover</span></h2>
             </div>
             </Link>
         </div>
@@ -88,8 +88,8 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           )}   
         </div>
       </nav>
-        <div className="lg:hidden font-medium text-xl mt-1" onClick={handleClick}>
-          <ul className={show ? "z-50 absolute -left-[500px] transition-all ease-in duration-500 bg-white w-full md:w-80 py-5 px-8 rounded-md":"z-50 absolute left-0 bg-white w-full md:w-80 py-5 px-8 transition-all ease-in duration-500 rounded-md"}>
+        <div className="lg:hidden font-medium text-xl" onClick={handleClick}>
+          <ul className={show ? "z-50 absolute -left-[500px] transition-all ease-in duration-500 bg-gray-100 dark:bg-gray-800 w-full md:w-80 py-5 px-8 rounded-md":"z-50 absolute left-0 bg-gray-100 dark:bg-gray-800 w-full md:w-80 py-5 px-8 transition-all ease-in duration-500 rounded-md"}>
       <NavLink to="/" className={(navData) => (navData.isActive ? "text-primary" : '')}>
                 <li className="mb-3">Home</li>
               </NavLink>
