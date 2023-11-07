@@ -55,7 +55,7 @@ const Contactus = () => {
     <div>
       <section>
         <div className="pt-10 md:pt-14 pb-8 md:py-12 lg:pt-20 px-6 md:px-10 lg:px-20 mx-auto">
-          <h2 className="mb-3 md:mb-5 text-4xl lg:text-5xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
+          <h2 className="mb-3 md:mb-5 text-4xl lg:text-5xl tracking-tight font-extrabold text-center text-gray-800 dark:text-white">
             Contact <span className="text-primary">Us</span>
           </h2>
           <p className="mb-6 font-light text-center text-gray-600 dark:text-gray-200 sm:text-xl">
