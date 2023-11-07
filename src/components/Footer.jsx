@@ -40,7 +40,7 @@ export default function Footer() {
                     <a href="" className="hover:underline">Local Guide</a>
                 </li>
                 <li className="mb-4">
-                    <a href="" className="hover:underline">FAQ</a>
+                    <Link to='/faq' className="hover:underline">FAQ</Link>
                 </li>
                 <li className="mb-4">
                     <a href="" className="hover:underline">Follow Us</a>
