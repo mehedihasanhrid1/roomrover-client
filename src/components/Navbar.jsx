@@ -89,7 +89,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
         </div>
       </nav>
         <div className="lg:hidden font-medium text-xl" onClick={handleClick}>
-          <ul className={show ? "z-50 absolute -left-[800px] transition-all ease-in duration-500 bg-gray-100 dark:bg-gray-800 w-full md:w-80 py-5 px-8 rounded-md":"z-50 absolute left-0 bg-gray-100 dark:bg-gray-800 w-full md:w-80 py-5 px-8 transition-all ease-in duration-500 rounded-md"}>
+          <ul className={`z-50 absolute transition-all ease-in duration-500 bg-gray-100 dark:bg-gray-800 w-full md:w-80 py-5 px-8 rounded-md ${show ? " -left-[800px]":"left-0"}`}>
       <NavLink to="/" className={(navData) => (navData.isActive ? "text-primary" : '')}>
                 <li className="mb-3">Home</li>
               </NavLink>
