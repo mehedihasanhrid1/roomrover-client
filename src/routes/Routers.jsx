@@ -7,6 +7,7 @@ import Signup from "../pages/Signup";
 import Contactus from "../components/Contactus";
 import AboutUs from "../components/AboutUs";
 import FAQs from "../components/FAQs";
+import PrivacyTerms from "../components/PrivacyTerms";
 
 const routers = createBrowserRouter(
     [
@@ -37,8 +38,12 @@ const routers = createBrowserRouter(
                     element:<AboutUs/>
                 },
                 {
-                    path:'faq',
+                    path:'/faq',
                     element:<FAQs/>
+                },
+                {
+                    path:'/terms',
+                    element:<PrivacyTerms/>
                 }
             ]
         }
