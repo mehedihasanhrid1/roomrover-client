@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import { Helmet } from "react-helmet-async";
+import React, { useContext, useState , useEffect } from "react";
 import SigninBanner from "../assets/login.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider";
@@ -16,6 +15,10 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [loginError, setLoginError] = useState(null);
+
+  useEffect(() => {
+    document.title = 'Sign In to Your Account';
+  }, []);
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -73,9 +76,6 @@ const Login = () => {
 
   return (
     <div>
-      <Helmet>
-        <title>Sign In to Your Account</title>
-      </Helmet>
       <section className="my-8 lg:my-10 lg:mx-8">
         <div className="flex md:gap-12 gap-16 items-center justify-center px-6 py-8 mx-auto lg:py-0">
           <div className="hidden md:inline-block">

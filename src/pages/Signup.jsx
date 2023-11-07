@@ -1,5 +1,4 @@
-import React, { useContext , useState }  from "react";
-import { Helmet } from "react-helmet-async";
+import React, { useContext , useState , useEffect }  from "react";
 import Banner from "../assets/signup.png";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -12,6 +11,10 @@ const Signup = () => {
   const { auth } = useContext(AuthContext);
   const navigate = useNavigate();
   const [passwordError, setPasswordError] = useState(null);
+
+  useEffect(() => {
+    document.title = 'Start Your Journey with Us: Sign Up';
+  }, []);
 
   const handleSignOut = async () => {
     try {
@@ -104,9 +107,6 @@ const Signup = () => {
 
   return (
     <div>
-      <Helmet>
-        <title>Start Your Journey with Us: Sign Up</title>
-      </Helmet>
       <section className="mt-6 lg:my-20 lg:mx-8">
         <div className="flex md:gap-12 gap-16 items-center justify-center px-6 py-8 mx-auto lg:py-0">
           <div className="hidden md:inline-block">

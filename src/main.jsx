@@ -4,17 +4,14 @@ import './index.css'
 import { ThemeProvider } from '@material-tailwind/react'
 import { RouterProvider } from 'react-router-dom'
 import routers from './routes/Routers'
-import {HelmetProvider} from 'react-helmet-async'
 import AuthProvider from './AuthProvider'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-    <HelmetProvider>
         <ThemeProvider>
           <RouterProvider router={routers}/>
         </ThemeProvider>
-      </HelmetProvider>
     </AuthProvider>
   </React.StrictMode>,
 )

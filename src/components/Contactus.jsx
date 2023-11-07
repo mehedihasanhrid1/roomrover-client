@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ContactLogo from '../assets/contact_us.png';
-import { Helmet } from 'react-helmet-async';
 
 const Contactus = () => {
+    useEffect(() => {
+        document.title = "Contact Us - We're Here to Help";
+    },[]);
     return (
         <div>
-             <Helmet>
-      <title>Contact Us - We're Here to Help</title>
-      </Helmet>
             <section>
   <div className="pt-10 md:pt-14 pb-8 md:py-12 lg:pt-20 px-6 md:px-10 lg:px-20 mx-auto">
       <h2 className="mb-3 md:mb-5 text-4xl lg:text-5xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact <span className='text-primary'>Us</span></h2>
