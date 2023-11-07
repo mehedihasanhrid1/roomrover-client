@@ -1,9 +1,10 @@
 import React, { useContext , useState , useEffect }  from "react";
 import Banner from "../assets/signup.png";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../AuthProvider";
+import SuccessToast from "../components/SuccessToast";
+import ErrorToast from "../components/ErrorToast";
 import { FaTimes } from "react-icons/fa";
 import { createUserWithEmailAndPassword, updateProfile, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider , GithubAuthProvider , signOut } from 'firebase/auth';
 
@@ -11,6 +12,21 @@ const Signup = () => {
   const { auth } = useContext(AuthContext);
   const navigate = useNavigate();
   const [passwordError, setPasswordError] = useState(null);
+  const [successToast, setSuccessToast] = useState(false);
+    const [errorToast, setErrorToast] = useState(false);
+    const [toastMessage, setToastMessage] = useState('');
+
+  const handleSuccessToast = (message) => {
+    setToastMessage(message);
+    setSuccessToast(true);
+    setTimeout(() => setSuccessToast(false), 3000); 
+  };
+
+  const handleErrorToast = (message) => {
+    setToastMessage(message);
+    setErrorToast(true);
+    setTimeout(() => setErrorToast(false), 3000);  
+  };
 
   useEffect(() => {
     document.title = 'Start Your Journey with Us: Sign Up';
@@ -55,14 +71,14 @@ const Signup = () => {
         photoURL: photoURL,
       });
       handleSignOut();
-      toast.success("Signup successful!");
+      handleSuccessToast('Signup successful!');
       setTimeout(() => {
         navigate('/login')
       }, 4000);
 
     } catch (error) {
       console.error(error.message);
-      toast.error(`Signup failed.${error.message}`);
+      handleErrorToast(`Signup failed.${error.message}`);
     }
   };
 
@@ -70,12 +86,12 @@ const Signup = () => {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-      toast.success('Signup with Google successful!');
+      handleSuccessToast('Signup with Google successful!');
       handleSignOut();
       navigate('/login');
     } catch (error) {
       console.error(error.message);
-      toast.error('Signup with Google failed. Please try again.');
+      handleErrorToast('Signup with Google failed. Please try again.');
     }
   };
 
@@ -83,12 +99,12 @@ const Signup = () => {
     try {
       const provider = new FacebookAuthProvider();
       await signInWithPopup(auth, provider);
-      toast.success('Signup with Facebook successful!');
+      handleSuccessToast('Signup with Facebook successful!');
       handleSignOut();
       navigate('/login');
     } catch (error) {
       console.error(error.message);
-      toast.error('Signup with Facebook failed. Please try again.');
+      handleErrorToast('Signup with Facebook failed. Please try again.');
     }
   };
 
@@ -96,12 +112,12 @@ const Signup = () => {
     try {
       const provider = new GithubAuthProvider();
       await signInWithPopup(auth, provider);
-      toast.success('Signup with Github successful!');
+      handleSuccessToast('Signup with Github successful!');
       handleSignOut();
       navigate('/login');
     } catch (error) {
       console.error(error.message);
-      toast.error('Signup with github failed. Please try again.');
+      handleErrorToast('Signup with Github failed. Please try again.');
     }
   };
 
@@ -336,8 +352,8 @@ const Signup = () => {
           </div>
         </div>
       </section>
-
-      <ToastContainer position="top-center" autoClose={3000} />
+      {successToast && <SuccessToast duration = {3000} message={toastMessage} onClose={() => setSuccessToast(false)} />}
+      {errorToast && <ErrorToast duration = {3000} message={toastMessage} onClose={() => setErrorToast(false)} />}
     </div>
   );
 };
