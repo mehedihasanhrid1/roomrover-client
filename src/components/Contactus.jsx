@@ -1,12 +1,14 @@
-import React, { useEffect , useState } from "react";
+import React, { useEffect , useRef, useState } from "react";
 import ContactLogo from "../assets/contact_us.png";
 import SuccessToast from "./SuccessToast";
 import ErrorToast from "./ErrorToast";
+import axios from "axios";
 
 const Contactus = () => {
     const [successToast, setSuccessToast] = useState(false);
     const [errorToast, setErrorToast] = useState(false);
     const [toastMessage, setToastMessage] = useState('');
+    const formRef = useRef(null);
 
   const handleSuccessToast = (message) => {
     setToastMessage(message);
@@ -29,8 +31,25 @@ const Contactus = () => {
     const email = e.target.email.value;
     const subject = e.target.subject.value;
     const comment = e.target.comment.value;
-    handleSuccessToast('We have received your feedback.');
-    console.log(email, subject, comment);
+
+      axios
+      .post("http://localhost:5000/feedback", {
+        email,
+        subject,
+        comment
+      })
+      .then((res) => {
+        handleSuccessToast("We have received your feedback.");
+        setTimeout(() => {
+            formRef.current.reset(); 
+          }, 2000);
+          console.log(res); 
+      })
+      .catch((error) => {
+        handleErrorToast("Failed to submit feedback. Please try again.");
+        console.log(error);
+      });
+
   };
   return (
     <div>
@@ -49,7 +68,7 @@ const Contactus = () => {
               src={ContactLogo}
               alt=""
             />
-            <form onSubmit={handleSubmit} className="space-y-8 w-full">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-8 w-full">
               <div>
                 <label
                   htmlFor="email"

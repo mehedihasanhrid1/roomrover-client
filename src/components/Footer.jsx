@@ -1,5 +1,6 @@
 import React from 'react'
 import { SlSocialFacebook , SlSocialLinkedin , SlSocialYoutube , SlSocialTwitter , SlSocialInstagram , SlSocialReddit } from "react-icons/sl";
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -19,7 +20,7 @@ export default function Footer() {
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
             <ul className="text-gray-600 dark:text-gray-100 font-medium">
                 <li className="mb-4">
-                    <a href="" className=" hover:underline">About Us</a>
+                    <Link to='/aboutus' className="hover:underline">About Us</Link>
                 </li>
                 <li className="mb-4">
                     <a href="" className="hover:underline">Careers</a>

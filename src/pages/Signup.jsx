@@ -1,7 +1,6 @@
 import React, { useContext , useState , useEffect }  from "react";
 import Banner from "../assets/signup.png";
 import { Link, useNavigate } from "react-router-dom";
-import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../AuthProvider";
 import SuccessToast from "../components/SuccessToast";
 import ErrorToast from "../components/ErrorToast";
