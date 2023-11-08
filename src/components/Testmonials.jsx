@@ -4,8 +4,11 @@ import Banner from "../assets/testmonials.png";
 
 export default function Testmonials() {
   return (
-    <div>
-      <Carousel loop={true} autoplay={true} autoplayDelay={7000} navigation={() => false} className="h-[32rem]">
+    <div data-aos="fade-right">
+      <h2 className="mb-5 lg:mb-10 text-3xl md:text-4xl lg:text-5xl tracking-tight font-extrabold text-center">
+            What our <span className="text-primary">Customer Says</span>
+          </h2>
+      <Carousel loop={true} autoplay={true} autoplayDelay={10000} navigation={() => false} className="h-[32rem]">
         
         <div className="relative h-[32rem]">
           <div className="absolute inset-0 lg:mt-12">

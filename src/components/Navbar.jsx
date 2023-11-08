@@ -17,7 +17,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
   return (
     <div className="relative">
-      <nav className="py-4 px-2 md:p-5 shadow flex items-center justify-between bg-gray-200 dark:bg-gray-900">
+      <nav className="py-4 px-2 md:p-5 shadow flex items-center justify-between bg-gray-50 dark:bg-gray-900">
         <div className="flex items-center justify-center gap-3 md:gap-4 text-lg md:text-xl">
         <button className="lg:hidden" onClick={handleClick}>
           {click ? <FaTimes /> : <FaBars />}
