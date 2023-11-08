@@ -1,32 +1,33 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
 
+const images = [
+    "https://i.ibb.co/GcBfxHv/h-13.jpg",
+    "https://i.ibb.co/ZSnhL9t/h-12.jpg",
+    "https://i.ibb.co/SQpknV0/h-11.jpg",
+    "https://i.ibb.co/rtpx2BH/h-10.jpg",
+    "https://i.ibb.co/ZcdBz9h/h-1.jpg",
+    "https://i.ibb.co/hXVdVhK/h-4.jpg",
+    "https://i.ibb.co/fCmWKwL/h-3.jpg"
+]
+
 export default function Featureroom() {
   return (
     <div className="my-6 lg:my-12">
       <div className="mx-10 mb-4 md:mb-8">
         <Marquee speed={20} pauseOnHover='true'>
-        <div className="p-5 h-60 md:h-80">
-        <img
-         src="https://i.ibb.co/ZcdBz9h/h-1.jpg"
-         alt="image 1"
-         className="h-full w-full rounded-xl object-cover"
-       />
-        </div>
-        <div className="p-5 h-60 md:h-80">
-        <img
-         src="https://i.ibb.co/hXVdVhK/h-4.jpg"
-         alt="image 1"
-         className="h-full w-full rounded-xl object-cover"
-       />
-        </div>
-        <div className="p-5 h-60 md:h-80">
-        <img
-         src="https://i.ibb.co/fCmWKwL/h-3.jpg"
-         alt="image 1"
-         className="h-full w-full rounded-xl object-cover"
-       />
-        </div>
+            {
+                images.map((image,index) => (
+                    <div key={index} className="p-5 h-60 md:h-80">
+                    <img
+                     src={image}
+                     alt={`image ${index}`}
+                     className="h-full w-full rounded-xl object-cover"
+                   />
+                    </div>
+                ))
+            }
+
         </Marquee>
         
       </div>
