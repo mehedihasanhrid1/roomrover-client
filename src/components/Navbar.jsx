@@ -81,7 +81,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             </button>
           ) : (
             <Link to="/login">
-              <button className=' text-white px-4 text-sm md:px-4 lg:px-5 md:text-lg py-2 button-btn rounded-lg'>
+              <button className=' text-white px-4 text-sm lg:px-5 md:text-lg py-2 button-btn rounded-lg'>
                 Login
               </button>
             </Link>
