@@ -1,7 +1,10 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import { Carousel } from "@material-tailwind/react";
 
 const AboutUs = () => {
+  useEffect(() => {
+    document.title = "About Us - Room Rover";
+  }, []);
   return (
     <div className="bg-gray-100 dark:bg-gray-900 pt-6">
     

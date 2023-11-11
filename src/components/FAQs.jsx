@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 
 const FAQs = [
     {
@@ -104,6 +104,9 @@ const FAQs = [
   ];  
 
 const FAQPage = () => {
+  useEffect(() => {
+    document.title = "Frequently Asked Questions - Room Rover";
+  }, []);
   return (
     <div className="py-5 md:pt-10">
       <div className="mx-5 p-6 md:px-10 lg:px-16">

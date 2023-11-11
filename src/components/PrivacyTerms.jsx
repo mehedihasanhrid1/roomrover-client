@@ -1,6 +1,9 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 
 const PrivacyTerms = () => {
+    useEffect(() => {
+      document.title = "Terms and Conditions - Room Rover";
+    }, []);
   return (
     <div className="py-5 md:pt-10">
       <div className="mx-5 p-6 md:px-10 lg:px-16 space-y-3">
