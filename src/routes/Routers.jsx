@@ -10,6 +10,7 @@ import FAQs from "../components/FAQs";
 import PrivacyTerms from "../components/PrivacyTerms";
 import Mybookings from "../pages/Mybookings";
 import Rooms from "../pages/Rooms";
+import Roomdetails from "../pages/Roomdetails";
 
 const routers = createBrowserRouter(
     [
@@ -54,6 +55,10 @@ const routers = createBrowserRouter(
                 {
                     path:'/rooms',
                     element:<Rooms/>
+                },
+                {
+                    path:'/details',
+                    element:<Roomdetails/>
                 }
             ]
         }
