@@ -8,6 +8,8 @@ import Contactus from "../components/Contactus";
 import AboutUs from "../components/AboutUs";
 import FAQs from "../components/FAQs";
 import PrivacyTerms from "../components/PrivacyTerms";
+import Mybookings from "../pages/Mybookings";
+import Rooms from "../pages/Rooms";
 
 const routers = createBrowserRouter(
     [
@@ -44,6 +46,14 @@ const routers = createBrowserRouter(
                 {
                     path:'/terms',
                     element:<PrivacyTerms/>
+                },
+                {
+                    path:'/bookings',
+                    element:<Mybookings/>
+                },
+                {
+                    path:'/rooms',
+                    element:<Rooms/>
                 }
             ]
         }

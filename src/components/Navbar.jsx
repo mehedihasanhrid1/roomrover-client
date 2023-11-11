@@ -36,10 +36,10 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             <NavLink to="/" className={(navData) => (navData.isActive ? "text-primary border-b-2 border-[#2746E6]" : '')}>
                 <li className="">Home</li>
               </NavLink>
-              <NavLink to="/addproduct" className={(navData) => (navData.isActive ? "text-primary border-b-2 border-[#2746E6]" : '')}>
+              <NavLink to="/rooms" className={(navData) => (navData.isActive ? "text-primary border-b-2 border-[#2746E6]" : '')}>
                 <li className="">Rooms</li>
               </NavLink>
-              <NavLink to="/cart" className={(navData) => (navData.isActive ? "text-primary border-b-2 border-[#2746E6]" : '')}>
+              <NavLink to="/bookings" className={(navData) => (navData.isActive ? "text-primary border-b-2 border-[#2746E6]" : '')}>
                 <li className="">My Bookings</li>
               </NavLink>
               <NavLink to="/contactus" className={(navData) => (navData.isActive ? "text-primary border-b-2 border-[#2746E6]" : '')}>
@@ -93,10 +93,10 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
       <NavLink to="/" className={(navData) => (navData.isActive ? "text-primary" : '')}>
                 <li className="mb-3">Home</li>
               </NavLink>
-              <NavLink to="/addproduct" className={(navData) => (navData.isActive ? "text-primary" : '')}>
+              <NavLink to="/rooms" className={(navData) => (navData.isActive ? "text-primary" : '')}>
                 <li className="mb-3">Rooms</li>
               </NavLink>
-              <NavLink to="/cart" className={(navData) => (navData.isActive ? "text-primary" : '')}>
+              <NavLink to="/bookings" className={(navData) => (navData.isActive ? "text-primary" : '')}>
                 <li className="mb-3">My Bookings</li>
               </NavLink>
               <NavLink to="/contactus" className={(navData) => (navData.isActive ? "text-primary" : '')}>
