@@ -60,7 +60,7 @@ export default function Featureroom() {
               <img className="rounded-xl h-56 object-cover mb-4 md:mb-5" src={room.image} alt={`room ${index}`} />
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold">{room.price}/ <span className="text-lg font-medium">per night</span></h2>
-                <Link to={`rooms/details/${room._id}`}> <button className='text-white px-4 text-sm md:px-4 lg:px-5 md:text-lg py-2 button-btn rounded-lg'>
+                <Link to={`details/${room._id}`}> <button className='text-white px-4 text-sm md:px-4 lg:px-5 md:text-lg py-2 button-btn rounded-lg'>
                   Book Now
                 </button></Link>
               </div>

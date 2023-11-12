@@ -68,7 +68,7 @@ const routers = createBrowserRouter(
                       }             
                 },
                 {
-                    path:'rooms/details/:id',
+                    path:'/details/:id',
                     element:<Roomdetails/>,
                     loader: async ({ params }) => {
                         try {
