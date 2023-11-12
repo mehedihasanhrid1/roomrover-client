@@ -65,8 +65,7 @@ const routers = createBrowserRouter(
                           console.error('Error fetching rooms:', error);
                           return { rooms: [] };
                         }
-                      }
-                      
+                      }             
                 },
                 {
                     path:'/details',
