@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AiFillStar } from 'react-icons/ai';
 
-export default function Rooms() {
+const Rooms = () => {
   const { rooms } = useLoaderData();
+  const [filter, setFilter] = useState('default');
+  const [sortedRooms, setSortedRooms] = useState([]);
 
   useEffect(() => {
     document.title = "Choose your favorite room - Room Rover";
-  }, []);
+    sortRooms(filter);
+  }, [filter, rooms]);
 
   const availabilityOverlay = (availability) => {
     if (availability === "Unavailable") {
@@ -31,24 +34,50 @@ export default function Rooms() {
     return totalRating / reviews.length;
   };
 
+  const sortRooms = (filter) => {
+    let sorted = [...rooms];
+
+    switch (filter) {
+      case 'popularity':
+        sorted = sorted.sort((a, b) => countReviews(b.review) - countReviews(a.review));
+        break;
+      case 'rating':
+        sorted = sorted.sort((a, b) => calculateAverageRating(b.review) - calculateAverageRating(a.review));
+        break;
+      case 'price-asc':
+        sorted = sorted.sort((a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1)));
+        break;
+      case 'price-desc':
+        sorted = sorted.sort((a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1)));
+        break;
+      default:
+        break;
+    }
+
+    setSortedRooms(sorted);
+  };
+
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
+  };
+
   return (
     <div>
       <h2 className="my-5 md:my-10 text-3xl md:text-4xl lg:text-5xl tracking-tight font-extrabold text-center">
         Choose a <span className="text-primary">Available Room</span>
       </h2>
       <form className='mb-5 lg:mb-8 md:ml-5 xl:ml-10 flex items-center justify-center md:justify-start'>
-        <select name="filter" className="rounded-md bg-gray-100 dark:bg-[#253246] p-3 border border-gray-200 dark:border-gray-800">
-          <option defaultValue="default">Choose a filter</option>
+        <select name="filter" value={filter} onChange={handleFilterChange} className="rounded-md bg-gray-100 dark:bg-[#253246] p-3 border border-gray-200 dark:border-gray-800">
+          <option value="default">Choose a filter</option>
           <option value="popularity">Sort by popularity</option>
           <option value="rating">Sort by average rating</option>
-          <option value="price">Sort by price: low to high</option>
+          <option value="price-asc">Sort by price: low to high</option>
           <option value="price-desc">Sort by price: high to low</option>
         </select>
       </form>
       <div className="xl:mx-10 flex items-center justify-center flex-col md:flex-row mb-10 md:mb-12 lg:mb-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 lg:gap-4 xl:gap-6">
-
-          {rooms.map((room, index) => (
+          {sortedRooms.map((room, index) => (
             <div key={index} className="hover:scale-105 duration-500 rounded-xl w-80 p-4 bg-gray-200 dark:bg-[#253246]">
               <div className='relative mb-4 md:mb-5'>
                 <img className="rounded-xl h-60 object-cover" src={room.image} alt={rooms.title} />
@@ -72,9 +101,10 @@ export default function Rooms() {
               </div>
             </div>
           ))}
-
         </div>
       </div>
     </div>
-  )
+  );
 }
+
+export default Rooms;
