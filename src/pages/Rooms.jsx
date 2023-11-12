@@ -1,7 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
 
 export default function Rooms() {
+  const {rooms} = useLoaderData();
+  console.log(rooms);
   return (
     <div>
               <h2 className="my-5 md:my-10 text-3xl md:text-4xl lg:text-5xl tracking-tight font-extrabold text-center">
@@ -22,7 +24,9 @@ export default function Rooms() {
         <div className="hover:scale-105 duration-500 rounded-xl w-80 p-4 bg-gray-200 dark:bg-[#253246]">
           <div className='relative mb-4 md:mb-5'>
           <img className="rounded-xl h-60 object-cover" src="https://i.ibb.co/9nP6JQ5/h-5.jpg" alt="" />
-            <h2 className='text-3xl absolute inset-0 grid h-full w-full place-items-center bg-black/75 rounded-lg text-white font-semibold '>Unavilable</h2>
+
+            {/* <h2 className='text-3xl absolute inset-0 grid h-full w-full place-items-center bg-black/75 rounded-lg text-white font-semibold '>Unavilable</h2> */}
+
           </div>
           <div className='mb-2 flex items-center justify-between'>
             <p className='text-lg font-medium'>4 Reviews</p>

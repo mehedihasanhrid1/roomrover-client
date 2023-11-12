@@ -11,6 +11,7 @@ import PrivacyTerms from "../components/PrivacyTerms";
 import Mybookings from "../pages/Mybookings";
 import Rooms from "../pages/Rooms";
 import Roomdetails from "../pages/Roomdetails";
+import axios from "axios";
 
 const routers = createBrowserRouter(
     [
@@ -54,7 +55,18 @@ const routers = createBrowserRouter(
                 },
                 {
                     path:'/rooms',
-                    element:<Rooms/>
+                    element:<Rooms/>,
+                    loader: async () => {
+                        try {
+                          const response = await axios.get('http://localhost:5000/rooms');
+                          const data = response.data;
+                          return { rooms: data };
+                        } catch (error) {
+                          console.error('Error fetching rooms:', error);
+                          return { rooms: [] };
+                        }
+                      }
+                      
                 },
                 {
                     path:'/details',
