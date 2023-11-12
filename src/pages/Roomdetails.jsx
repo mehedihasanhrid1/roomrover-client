@@ -50,7 +50,7 @@ export default function Roomdetails() {
               />
               <div className="lg:w-1/2 w-full lg:pl-4 xl:pl-12 lg:py-6 mt-6 lg:mt-0">
                 <h2
-                  className={`text-lg tracking-wider lg:text-xl font-semibold ${
+                  className={`text-xl tracking-wider lg:text-2xl font-semibold ${
                     room.availability === "Available"
                       ? "text-green-700"
                       : "text-red-700"
@@ -68,7 +68,7 @@ export default function Roomdetails() {
                     }).map((_, i) => (
                       <AiFillStar key={i} />
                     ))}
-                    <p className="ml-2 lg:text-lg font-medium text-gray-700 dark:text-gray-300">
+                    <p className="ml-3 lg:text-lg font-medium text-gray-700 dark:text-gray-300">
                       {room.review.length} Reviews
                     </p>
                   </div>
@@ -102,7 +102,7 @@ export default function Roomdetails() {
                   <span className="font-normal ml-2">{room.capacity}</span>
                 </p>
                 <div className="flex items-center justify-between mt-3 lg:mt-5">
-                  <p className="title-font font-medium text-2xl md:text-3xl">
+                  <p className="title-font font-semibold text-2xl md:text-3xl">
                     {room.price}/
                     <span className="text-lg font-medium">per night</span>
                   </p>
@@ -129,7 +129,7 @@ export default function Roomdetails() {
             {room.review.map((review, index) => (
               <div
                 key={index}
-                className="flex flex-wrap py-4 mb-6 border-t border-b border-gray-200 dark:border-gray-700"
+                className="flex items-center flex-wrap py-4 mb-6 border-t border-b border-gray-200 dark:border-gray-700"
               >
                 <div className="w-full px-4 mb-4 lg:mb-0 md:w-1/4">
                   <img
@@ -144,7 +144,7 @@ export default function Roomdetails() {
                     {moment(review.reviewTime).format("DD MMMM YYYY")}
                   </p>
                 </div>
-                <div className="w-full px-4 mb-4 md:w-1/4 lg:mb-0 lg:mt-10">
+                <div className="w-full px-4 mb-4 md:w-1/4 lg:mb-0">
                   <div className="flex items-center text-lg md:text-xl text-yellow-800">
                     {Array.from({ length: Number(review.ratings) }).map(
                       (_, index) => (
