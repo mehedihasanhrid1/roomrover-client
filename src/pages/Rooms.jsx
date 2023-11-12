@@ -64,7 +64,7 @@ export default function Rooms() {
               </div>
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold">{room.price} / <span className="text-lg font-medium">per night</span></h2>
-                <Link to="/details">
+                <Link to={`details/${room._id}`}>
                   <button className=' text-white px-4 text-sm md:text-lg py-2 button-btn rounded-lg'>
                     See Details
                   </button>

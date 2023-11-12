@@ -68,8 +68,18 @@ const routers = createBrowserRouter(
                       }             
                 },
                 {
-                    path:'/details',
-                    element:<Roomdetails/>
+                    path:'rooms/details/:id',
+                    element:<Roomdetails/>,
+                    loader: async ({ params }) => {
+                        try {
+                          const response = await axios.get(`http://localhost:5000/rooms/${params.id}`);
+                          const roomData = response.data;
+                          return { room: roomData };
+                        } catch (error) {
+                          console.error('Error fetching single room:', error);
+                          return { room: null };
+                        }
+                    }
                 }
             ]
         }
