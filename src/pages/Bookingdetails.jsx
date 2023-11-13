@@ -55,6 +55,7 @@ export default function Bookingdetails() {
       const response = await axios.post("http://localhost:5000/bookings", {
         room_id: room._id,
         room_title: room.title,
+        room_image: room.image,
         name: values.name,
         email: values.email,
         phone: values.phone,
@@ -102,7 +103,7 @@ export default function Bookingdetails() {
         Booking <span className="text-primary">Form</span>
       </h2>
       <div className="px-3 md:px-16 lg:px-32 mb-10 md:mb-14">
-        <div className="bg-gray-100 dark:bg-blue-gray-800 rounded-lg flex items-center justify-center p-5 lg:p-10">
+        <div className="bg-gray-100 dark:bg-blue-gray-800 rounded-lg flex items-center justify-center p-5 md:p-10">
           <form className="w-full" onSubmit={handleFormSubmit}>
             <div className="flex flex-col lg:flex-row items-center justify-start gap-8 mb-5">
               <img
