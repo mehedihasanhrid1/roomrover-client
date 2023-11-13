@@ -108,7 +108,7 @@ export default function Roomdetails() {
                   </p>
                   <div className="flex items-center justify-center">
                    <Link to={`/bookingdetails/${room._id}`}>
-                   <button className={`text-white px-4 text-sm md:text-lg py-2 ${room.capacity==="0"?"bg-gray-600":" button-btn"} rounded-lg`} disabled={room.capacity === "0"}>
+                   <button className={`text-white px-4 text-sm md:text-lg py-2 ${room.capacity==="0"?"bg-gray-600 cursor-not-allowed":" button-btn"} rounded-lg`} disabled={room.capacity === "0"}>
                       Book Now
                     </button>
                    </Link>
@@ -148,15 +148,15 @@ export default function Roomdetails() {
                 </div>
                 <div className="w-full px-4 mb-4 md:w-1/4 lg:mb-0">
                   <div className="flex items-center text-lg md:text-xl text-yellow-800">
+                  <p className="mr-2 lg:text-lg font-medium text-gray-500 dark:text-gray-400">
+                      {" "}
+                      {review.ratings}
+                    </p>
                     {Array.from({ length: Number(review.ratings) }).map(
                       (_, index) => (
                         <AiFillStar key={index} />
                       )
                     )}
-                    <p className="ml-2 lg:text-lg font-medium text-gray-500 dark:text-gray-400">
-                      {" "}
-                      {review.ratings}
-                    </p>
                   </div>
                 </div>
                 <div className="w-full px-4 md:w-2/5">

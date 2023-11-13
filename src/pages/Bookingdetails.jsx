@@ -17,8 +17,8 @@ export default function Bookingdetails() {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const [bookingPrice, setBookingPrice] = useState(0);
   const handleOpen = () => setOpen(!open);
+  const [bookingPrice, setBookingPrice] = useState(0);
 
   useEffect(() => {
     document.title = `Book Now - ${room.title}`;
@@ -270,9 +270,7 @@ export default function Bookingdetails() {
               </button>
             </div>
           </form>
-        </div>
-      </div>
-      <Dialog open={open} handler={handleOpen}>
+          <Dialog open={open} handler={handleOpen}>
         <DialogHeader className="mt-2">Booking Summary</DialogHeader>
         <DialogBody>
           <p>
@@ -336,6 +334,8 @@ export default function Bookingdetails() {
           </Button>
         </DialogFooter>
       </Dialog>
+        </div>
+      </div>
     </div>
   );
 }
