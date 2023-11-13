@@ -56,7 +56,7 @@ export default function Featureroom() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 lg:gap-4 xl:gap-6">
 
         {rooms.map((room, index) => (
-            <div data-aos="fade-right" key={index} className="hover:scale-105 duration-500 rounded-xl w-80 p-5 bg-gray-200 dark:bg-[#253246]">
+            <div data-aos="fade-left" key={index} className="hover:scale-105 duration-500 rounded-xl w-80 p-5 bg-gray-200 dark:bg-[#253246]">
               <img className="rounded-xl h-56 object-cover mb-4 md:mb-5" src={room.image} alt={`room ${index}`} />
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold">{room.price}/ <span className="text-lg font-medium">per night</span></h2>

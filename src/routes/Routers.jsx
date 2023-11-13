@@ -12,6 +12,8 @@ import Mybookings from "../pages/Mybookings";
 import Rooms from "../pages/Rooms";
 import Roomdetails from "../pages/Roomdetails";
 import axios from "axios";
+import PrivateRoute from "./PrivateRoute";
+import Bookingdetails from "../pages/Bookingdetails";
 
 const routers = createBrowserRouter(
     [
@@ -52,6 +54,20 @@ const routers = createBrowserRouter(
                 {
                     path:'/bookings',
                     element:<Mybookings/>
+                },
+                {
+                    path:'/bookingdetails/:id',
+                    element:<PrivateRoute><Bookingdetails/></PrivateRoute>,
+                    loader: async ({ params }) => {
+                        try {
+                          const response = await axios.get(`http://localhost:5000/rooms/${params.id}`);
+                          const roomData = response.data;
+                          return { room: roomData };
+                        } catch (error) {
+                          console.error('Error fetching single room:', error);
+                          return { room: null };
+                        }
+                    }
                 },
                 {
                     path:'/rooms',

@@ -7,7 +7,7 @@ import {
   BsInstagram,
   BsTwitter,
 } from "react-icons/bs";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { InfinitySpin } from "react-loader-spinner";
 
 export default function Roomdetails() {
@@ -107,9 +107,11 @@ export default function Roomdetails() {
                     <span className="text-lg font-medium">per night</span>
                   </p>
                   <div className="flex items-center justify-center">
-                    <button className="text-white px-4 text-sm md:text-lg py-2 button-btn rounded-lg">
+                   <Link to={`/bookingdetails/${room._id}`}>
+                   <button className={`text-white px-4 text-sm md:text-lg py-2 ${room.availability==="Available"?"button-btn":"bg-gray-600"} rounded-lg`} disabled={room.availability === "Unavailable"}>
                       Book Now
                     </button>
+                   </Link>
                     <button className="rounded-full text-xl w-10 h-10 bg-gray-200 dark:bg-gray-300 p-0 border-0 inline-flex items-center justify-center text-red-500 ml-4">
                       <BsFillHeartFill />
                     </button>
