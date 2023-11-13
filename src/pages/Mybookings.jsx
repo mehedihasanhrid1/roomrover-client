@@ -91,6 +91,13 @@ export default function Mybookings() {
       setOpenUpdater(false);
       return;
     }
+
+    if (moment(newCheckInDate).isSameOrAfter(newCheckOutDate)) {
+      handleErrorToast("New check-in date must be before the new check-out date.");
+      setOpenUpdater(false);
+      return;
+    }
+    
     try {
       const response = await axios.put(`http://localhost:5000/bookings/${bookingID}`, {
         checkin_date: newCheckInDate,
