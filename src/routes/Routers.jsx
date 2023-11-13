@@ -53,7 +53,7 @@ const routers = createBrowserRouter(
                 },
                 {
                     path:'/bookings',
-                    element:<Mybookings/>
+                    element:<PrivateRoute><Mybookings/></PrivateRoute>
                 },
                 {
                     path:'/bookingdetails/:id',

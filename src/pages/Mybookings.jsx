@@ -57,7 +57,10 @@ export default function Mybookings() {
     const fetchBookings = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/bookings/cart?email=${user?.email}`
+          `http://localhost:5000/bookings/cart?email=${user?.email}`,
+          {
+            withCredentials: true,
+          }
         );
         setBookings(response.data);
       } catch (error) {
