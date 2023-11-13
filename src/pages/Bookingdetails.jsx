@@ -1,14 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { InfinitySpin } from "react-loader-spinner";
-import { useLoaderData } from "react-router-dom";
-import { Button, Dialog, DialogHeader, DialogBody, DialogFooter } from "@material-tailwind/react";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import {
+  Button,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+} from "@material-tailwind/react";
 import { AuthContext } from "../AuthProvider";
 import moment from "moment";
+import axios from "axios";
 
 export default function Bookingdetails() {
   const { room } = useLoaderData();
-  console.log(room)
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [bookingPrice, setBookingPrice] = useState(0);
   const handleOpen = () => setOpen(!open);
@@ -30,7 +37,7 @@ export default function Bookingdetails() {
     email: user?.email || "",
     phone: "",
     price: room?.price || "",
-    seat: room?.capacity || "",
+    seat: "1",
     bookingDateFrom: moment().format("YYYY-MM-DD"),
     bookingDateTo: moment().add(1, "days").format("YYYY-MM-DD"),
     address: "",
@@ -43,6 +50,38 @@ export default function Bookingdetails() {
     setValues({ ...values, [name]: value });
   };
 
+  const handleUpdate = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/bookings", {
+        room_id: room._id,
+        room_title: room.title,
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        seat: parseInt(values.seat, 10),
+        checkin_date: values.bookingDateFrom,
+        checkout_date: values.bookingDateTo,
+        total_price: bookingPrice,
+        address: values.address,
+      });
+
+      const roomCapacity = parseInt(room.capacity, 10) - parseInt(values.seat, 10);
+      const newCapacity = roomCapacity.toString();
+      const updatedRoom = await axios.put(
+        `http://localhost:5000/update/${room._id}`,
+        {
+          capacity: newCapacity,
+        }
+      );
+
+      setOpen(false);
+      navigate('/rooms');
+
+    } catch (error) {
+      console.error("Error submitting booking:", error);
+    }
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -50,10 +89,11 @@ export default function Bookingdetails() {
     const endDate = moment(values.bookingDateTo);
     const days = endDate.diff(startDate, "days");
     const seats = parseInt(values.seat, 10);
-    const numericPrice = parseFloat(room.price.replace(/[^0-9.-]+/g, ''));
-    const totalPrice = seats* days * numericPrice;
+    const numericPrice = parseFloat(room.price.replace(/[^0-9.-]+/g, ""));
+    const totalPrice = seats * days * numericPrice;
     setBookingPrice(totalPrice);
     setOpen(true);
+
   };
 
   return (
@@ -65,12 +105,21 @@ export default function Bookingdetails() {
         <div className="bg-gray-100 dark:bg-blue-gray-800 rounded-lg flex items-center justify-center p-5 lg:p-10">
           <form className="w-full" onSubmit={handleFormSubmit}>
             <div className="flex flex-col lg:flex-row items-center justify-start gap-8 mb-5">
-              <img className="h-40 rounded-lg" src={room.image} alt={room.title} />
-              <h1 className="text-2xl md:text-3xl title-font font-medium">{room.title}</h1>
+              <img
+                className="h-40 rounded-lg"
+                src={room.image}
+                alt={room.title}
+              />
+              <h1 className="text-2xl md:text-3xl title-font font-medium">
+                {room.title}
+              </h1>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
               <div className="w-full col-span-2">
-                <label htmlFor="name" className="block mb-2 text-sm md:text-base font-medium text-gray-900 dark:text-white">
+                <label
+                  htmlFor="name"
+                  className="block mb-2 text-sm md:text-base font-medium text-gray-900 dark:text-white"
+                >
                   Name
                 </label>
                 <input
@@ -85,7 +134,10 @@ export default function Bookingdetails() {
                 />
               </div>
               <div className="w-full">
-                <label htmlFor="email" className="block mb-2 text-sm md:text-base font-medium text-gray-900 dark:text-white">
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm md:text-base font-medium text-gray-900 dark:text-white"
+                >
                   Email
                 </label>
                 <input
@@ -100,7 +152,10 @@ export default function Bookingdetails() {
                 />
               </div>
               <div className="w-full">
-                <label htmlFor="phone" className="block mb-2 text-sm md:text-base font-medium text-gray-900 dark:text-white">
+                <label
+                  htmlFor="phone"
+                  className="block mb-2 text-sm md:text-base font-medium text-gray-900 dark:text-white"
+                >
                   Phone
                 </label>
                 <input
@@ -115,7 +170,10 @@ export default function Bookingdetails() {
                 />
               </div>
               <div className="w-full">
-                <label htmlFor="price" className="block mb-2 text-sm lg:text-base font-medium text-gray-900 dark:text-white">
+                <label
+                  htmlFor="price"
+                  className="block mb-2 text-sm lg:text-base font-medium text-gray-900 dark:text-white"
+                >
                   Price
                 </label>
                 <input
@@ -130,7 +188,10 @@ export default function Bookingdetails() {
                 />
               </div>
               <div className="w-full">
-                <label htmlFor="seat" className="block mb-2 text-sm lg:text-base font-medium text-gray-900 dark:text-white">
+                <label
+                  htmlFor="seat"
+                  className="block mb-2 text-sm lg:text-base font-medium text-gray-900 dark:text-white"
+                >
                   Seat
                 </label>
                 <input
@@ -140,14 +201,17 @@ export default function Bookingdetails() {
                   value={values.seat}
                   onChange={handleInputChange}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
-                  placeholder={`Available Seat: ${room.capacity }`}
+                  placeholder={`Available Seat: ${room.capacity}`}
                   required
                   min="1"
                   max={room.capacity}
                 />
               </div>
               <div className="w-full">
-                <label htmlFor="bookingDateFrom" className="block mb-2 text-sm lg:text-base font-medium text-gray-900 dark:text-white">
+                <label
+                  htmlFor="bookingDateFrom"
+                  className="block mb-2 text-sm lg:text-base font-medium text-gray-900 dark:text-white"
+                >
                   Check In Date
                 </label>
                 <input
@@ -161,7 +225,10 @@ export default function Bookingdetails() {
                 />
               </div>
               <div className="w-full">
-                <label htmlFor="bookingDateTo" className="block mb-2 text-sm lg:text-base font-medium text-gray-900 dark:text-white">
+                <label
+                  htmlFor="bookingDateTo"
+                  className="block mb-2 text-sm lg:text-base font-medium text-gray-900 dark:text-white"
+                >
                   Check Out Date
                 </label>
                 <input
@@ -175,7 +242,10 @@ export default function Bookingdetails() {
                 />
               </div>
               <div className="w-full col-span-2">
-                <label htmlFor="address" className="block mb-2 text-sm lg:text-base font-medium text-gray-900 dark:text-white">
+                <label
+                  htmlFor="address"
+                  className="block mb-2 text-sm lg:text-base font-medium text-gray-900 dark:text-white"
+                >
                   Address
                 </label>
                 <textarea
@@ -204,27 +274,63 @@ export default function Bookingdetails() {
       <Dialog open={open} handler={handleOpen}>
         <DialogHeader className="mt-2">Booking Summary</DialogHeader>
         <DialogBody>
-
-          <p><span className="text-lg font-semibold text-gray-900">Name:</span> <span className="text-gray-800">{values.name}</span></p>
-          <p><span className="text-lg font-semibold text-gray-900">Email: </span><span className="text-gray-800">{values.email}</span></p>
-          <p><span className="text-lg font-semibold text-gray-900">Phone: </span><span className="text-gray-800">{values.phone}</span></p>
-          <p><span className="text-lg font-semibold text-gray-900">Seat: </span><span className="text-gray-800">{values.seat}</span></p>
-          <p><span className="text-lg font-semibold text-gray-900">Check In: </span><span className="text-gray-800">{moment(values.bookingDateFrom).format("DD MMMM YYYY")}</span></p>
-          <p><span className="text-lg font-semibold text-gray-900">Check Out: </span><span className="text-gray-800">
-          {moment(values.bookingDateTo).format("DD MMMM YYYY")}</span></p>
-          <p><span className="text-lg font-semibold text-gray-900">Address: </span><span className="text-gray-800">{values.address}</span></p>
-          <p><span className="text-xl font-semibold text-gray-900">Total Price: </span><span className="text-gray-800 text-lg">${bookingPrice}</span></p>
+          <p>
+            <span className="text-lg font-semibold text-gray-900">Name:</span>{" "}
+            <span className="text-gray-800">{values.name}</span>
+          </p>
+          <p>
+            <span className="text-lg font-semibold text-gray-900">Email: </span>
+            <span className="text-gray-800">{values.email}</span>
+          </p>
+          <p>
+            <span className="text-lg font-semibold text-gray-900">Phone: </span>
+            <span className="text-gray-800">{values.phone}</span>
+          </p>
+          <p>
+            <span className="text-lg font-semibold text-gray-900">Seat: </span>
+            <span className="text-gray-800">{values.seat}</span>
+          </p>
+          <p>
+            <span className="text-lg font-semibold text-gray-900">
+              Check In:{" "}
+            </span>
+            <span className="text-gray-800">
+              {moment(values.bookingDateFrom).format("DD MMMM YYYY")}
+            </span>
+          </p>
+          <p>
+            <span className="text-lg font-semibold text-gray-900">
+              Check Out:{" "}
+            </span>
+            <span className="text-gray-800">
+              {moment(values.bookingDateTo).format("DD MMMM YYYY")}
+            </span>
+          </p>
+          <p>
+            <span className="text-lg font-semibold text-gray-900">
+              Address:{" "}
+            </span>
+            <span className="text-gray-800">{values.address}</span>
+          </p>
+          <p>
+            <span className="text-xl font-semibold text-gray-900">
+              Total Price:{" "}
+            </span>
+            <span className="text-gray-800 text-lg">${bookingPrice}</span>
+          </p>
         </DialogBody>
         <DialogFooter className="mr-2">
           <Button
             variant="text"
             color="red"
-            onClick={handleOpen}
+            onClick={() => {
+              setOpen(!open);
+            }}
             className="mr-3"
           >
             <span>Cancel</span>
           </Button>
-          <Button variant="gradient" color="green" onClick={handleOpen}>
+          <Button variant="gradient" color="green" onClick={handleUpdate}>
             <span>Confirm</span>
           </Button>
         </DialogFooter>

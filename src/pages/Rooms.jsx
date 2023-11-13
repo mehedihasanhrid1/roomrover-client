@@ -12,8 +12,8 @@ const Rooms = () => {
     sortRooms(filter);
   }, [filter, rooms]);
 
-  const availabilityOverlay = (availability) => {
-    if (availability === "Unavailable") {
+  const availabilityOverlay = (capacity) => {
+    if (capacity === "0") {
       return (
         <h2 className='text-3xl absolute inset-0 grid h-full w-full place-items-center bg-black/75 rounded-lg text-white font-semibold '>Unavailable</h2>
       );
@@ -81,7 +81,7 @@ const Rooms = () => {
             <div key={index} className="hover:scale-105 duration-500 rounded-xl w-80 p-4 bg-gray-200 dark:bg-[#253246]">
               <div className='relative mb-4 md:mb-5'>
                 <img className="rounded-xl h-60 object-cover" src={room.image} alt={rooms.title} />
-                {availabilityOverlay(room.availability)}
+                {availabilityOverlay(room.capacity)}
               </div>
               <div className='mb-2.5 flex items-center justify-between'>
                 <p className='text-lg font-medium'>{countReviews(room.review)} Reviews</p>

@@ -51,12 +51,12 @@ export default function Roomdetails() {
               <div className="lg:w-1/2 w-full lg:pl-4 xl:pl-12 lg:py-6 mt-6 lg:mt-0">
                 <h2
                   className={`text-xl tracking-wider lg:text-2xl font-semibold ${
-                    room.availability === "Available"
-                      ? "text-green-700"
-                      : "text-red-700"
+                    room.capacity === "0"
+                      ? "text-red-500"
+                      : "text-green-700"
                   } mb-3`}
                 >
-                  {room.availability}
+                   {room.capacity === "0" ? "Unavailable" : "Available"}
                 </h2>
                 <h1 className="text-2xl md:text-3xl title-font font-medium mb-3 text-primary">
                   {room.title}
@@ -108,7 +108,7 @@ export default function Roomdetails() {
                   </p>
                   <div className="flex items-center justify-center">
                    <Link to={`/bookingdetails/${room._id}`}>
-                   <button className={`text-white px-4 text-sm md:text-lg py-2 ${room.availability==="Available"?"button-btn":"bg-gray-600"} rounded-lg`} disabled={room.availability === "Unavailable"}>
+                   <button className={`text-white px-4 text-sm md:text-lg py-2 ${room.capacity==="0"?"bg-gray-600":" button-btn"} rounded-lg`} disabled={room.capacity === "0"}>
                       Book Now
                     </button>
                    </Link>
