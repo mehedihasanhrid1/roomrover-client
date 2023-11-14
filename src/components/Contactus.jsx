@@ -33,7 +33,7 @@ const Contactus = () => {
     const comment = e.target.comment.value;
 
       axios
-      .post("http://localhost:5000/feedback", {
+      .post("https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/feedback", {
         email,
         subject,
         comment

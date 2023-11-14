@@ -15,6 +15,8 @@ import axios from "axios";
 import PrivateRoute from "./PrivateRoute";
 import Bookingdetails from "../pages/Bookingdetails";
 
+axios.defaults.withCredentials = true;
+
 const routers = createBrowserRouter(
     [
         {
@@ -60,7 +62,7 @@ const routers = createBrowserRouter(
                     element:<PrivateRoute><Bookingdetails/></PrivateRoute>,
                     loader: async ({ params }) => {
                         try {
-                          const response = await axios.get(`http://localhost:5000/rooms/${params.id}`);
+                          const response = await axios.get(`https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/rooms/${params.id}`);
                           const roomData = response.data;
                           return { room: roomData };
                         } catch (error) {
@@ -74,7 +76,7 @@ const routers = createBrowserRouter(
                     element:<Rooms/>,
                     loader: async () => {
                         try {
-                          const response = await axios.get('http://localhost:5000/rooms');
+                          const response = await axios.get('https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/rooms');
                           const data = response.data;
                           return { rooms: data };
                         } catch (error) {
@@ -88,7 +90,7 @@ const routers = createBrowserRouter(
                     element:<Roomdetails/>,
                     loader: async ({ params }) => {
                         try {
-                          const response = await axios.get(`http://localhost:5000/rooms/${params.id}`);
+                          const response = await axios.get(`https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/rooms/${params.id}`);
                           const roomData = response.data;
                           return { room: roomData };
                         } catch (error) {

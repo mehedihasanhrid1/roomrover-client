@@ -52,7 +52,7 @@ export default function Bookingdetails() {
 
   const handleUpdate = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/bookings", {
+      const response = await axios.post("https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/bookings", {
         room_id: room._id,
         room_title: room.title,
         room_image: room.image,
@@ -69,7 +69,7 @@ export default function Bookingdetails() {
       const roomCapacity = parseInt(room.capacity, 10) - parseInt(values.seat, 10);
       const newCapacity = roomCapacity.toString();
       const updatedRoom = await axios.put(
-        `http://localhost:5000/update/${room._id}`,
+        `https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/update/${room._id}`,
         {
           capacity: newCapacity,
         }

@@ -20,7 +20,7 @@ export default function Featureroom() {
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/rooms');
+        const response = await axios.get('https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/rooms');
         const sortedRooms = response.data.sort((a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1)));
         setRooms(sortedRooms.slice(0, 8));
       } catch (error) {

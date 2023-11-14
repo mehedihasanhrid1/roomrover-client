@@ -57,7 +57,7 @@ export default function Mybookings() {
     const fetchBookings = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/bookings/cart?email=${user?.email}`,
+          `https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/bookings/cart?email=${user?.email}`,
           {
             withCredentials: true,
           }
@@ -102,7 +102,7 @@ export default function Mybookings() {
     }
     
     try {
-      const response = await axios.put(`http://localhost:5000/bookings/${bookingID}`, {
+      const response = await axios.put(`https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/bookings/${bookingID}`, {
         checkin_date: newCheckInDate,
         checkout_date: newCheckOutDate,
       });
@@ -124,14 +124,14 @@ export default function Mybookings() {
   const handleCancelBooking = async (seat, bookingId, roomId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/bookings/${bookingId}`
+        `https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/bookings/${bookingId}`
       );
-      const room = await axios.get(`http://localhost:5000/rooms/${roomId}`);
+      const room = await axios.get(`https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/rooms/${roomId}`);
       const roomCapacity =
         parseInt(room.data.capacity, 10) + parseInt(seat, 10);
       const newCapacity = roomCapacity.toString();
       const updatedRoom = await axios.put(
-        `http://localhost:5000/update/${roomId}`,
+        `https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/update/${roomId}`,
         {
           capacity: newCapacity,
         }
@@ -153,7 +153,7 @@ export default function Mybookings() {
   const handleReview = async () => {
     try {
       const roomResponse = await axios.get(
-        `http://localhost:5000/rooms/${roomID}`
+        `https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/rooms/${roomID}`
       );
       const room = roomResponse.data;
 
@@ -171,7 +171,7 @@ export default function Mybookings() {
         review: [...room.review, newReview],
       };
 
-      await axios.put(`http://localhost:5000/update/review/${roomID}`, {
+      await axios.put(`https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/update/review/${roomID}`, {
         review: newReview,
       });
 

@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
       if (user) {
         const loggedUser = { email: user.email };
         axios
-          .post("http://localhost:5000/jwt", loggedUser, {
+          .post("https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/jwt", loggedUser, {
             withCredentials: true,
           })
           .then((response) => {
@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
             console.error("Error setting JWT_TOKEN:", error);
           });
       } else {
-        axios.post("http://localhost:5000/logout", null, {
+        axios.post("https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/logout", null, {
           withCredentials: true,
         });
       }
