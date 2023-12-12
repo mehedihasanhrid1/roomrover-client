@@ -10,6 +10,7 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
+import { FaTrashAlt } from "react-icons/fa";
 
 export default function Mybookings() {
   const { user } = useContext(AuthContext);
@@ -70,7 +71,7 @@ export default function Mybookings() {
     
     fetchBookings();
 
-  }, [user,bookings]);
+  }, []);
 
   const handleUpdateDateForm = (checkin, checkout, id) => {
     setBookingID(id);
@@ -144,6 +145,31 @@ export default function Mybookings() {
       console.error("Error cancelling booking:", error);
     }
   };
+
+
+  const handleDeleteBooking = async (seat, bookingId, roomId) => {
+    try {
+      const response = await axios.delete(
+        `https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/bookings/${bookingId}`
+      );
+      const room = await axios.get(`https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/rooms/${roomId}`);
+      const roomCapacity =
+        parseInt(room.data.capacity, 10) + parseInt(seat, 10);
+      const newCapacity = roomCapacity.toString();
+      const updatedRoom = await axios.put(
+        `https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/update/${roomId}`,
+        {
+          capacity: newCapacity,
+        }
+      );
+      const remaining = bookings.filter((booking) => booking._id !== bookingId);
+      setBookings(remaining);
+      handleSuccessToast("Booking Data Deleted Successfully");
+    } catch (error) {
+      handleErrorToast("Failed to Canceled Booking.");
+      console.error("Error cancelling booking:", error);
+    }  
+  }
 
   const handleReviewForm = (id) => {
     setRoomID(id);
@@ -269,6 +295,7 @@ export default function Mybookings() {
                     >
                       Update Booking Date
                     </button>
+                    <div className="w-full flex items-center justify-between gap-3">
                     <button
                       onClick={() =>
                         handleCancelBooking(
@@ -288,6 +315,21 @@ export default function Mybookings() {
                         ? "Visited"
                         : "Cancel Booking"}
                     </button>
+                    { moment().isAfter(moment(booking.checkout_date)) &&
+                      <button
+                      onClick={() =>
+                        handleDeleteBooking(
+                          booking.seat,
+                          booking._id,
+                          booking.room_id
+                        )
+                      }
+                      className={`text-lg text-white font-medium p-3 py-2.5 px-5 lg:px-6 rounded-lg text-center bg-red-400 hover:bg-red-500`}
+                    >
+                      <span className="flex items-center justify-center gap-3"><FaTrashAlt/> Delete</span>
+                    </button>
+                    }
+                    </div>
                   </div>
                 </div>
                 <div />

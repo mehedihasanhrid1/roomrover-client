@@ -35,9 +35,6 @@ const AuthProvider = ({ children }) => {
           .post("https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/jwt", loggedUser, {
             withCredentials: true,
           })
-          .then((response) => {
-            console.log(response.data);
-          })
           .catch((error) => {
             console.error("Error setting JWT_TOKEN:", error);
           });

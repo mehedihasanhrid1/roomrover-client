@@ -68,7 +68,7 @@ export default function Roomdetails() {
                     }).map((_, i) => (
                       <AiFillStar key={i} />
                     ))}
-                    <p className="ml-3 lg:text-lg font-medium text-gray-700 dark:text-gray-300">
+                    <p className="ml-3 text-sm md:text-base lg:text-lg font-medium text-gray-700 dark:text-gray-300">
                       {room.review.length} Reviews
                     </p>
                   </div>

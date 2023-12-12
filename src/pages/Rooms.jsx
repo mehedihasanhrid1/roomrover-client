@@ -63,7 +63,7 @@ const Rooms = () => {
 
   return (
     <div>
-      <h2 className="my-5 md:my-10 text-3xl md:text-4xl lg:text-5xl tracking-tight font-extrabold text-center">
+      <h2 className="my-5 px-5 md:my-10 text-3xl md:text-4xl lg:text-5xl tracking-tight font-extrabold text-center">
         Choose a <span className="text-primary">Available Room</span>
       </h2>
       <form className='mb-5 lg:mb-8 md:ml-5 xl:ml-10 flex items-center justify-center md:justify-start'>
