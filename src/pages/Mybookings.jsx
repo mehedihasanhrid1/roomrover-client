@@ -130,11 +130,11 @@ export default function Mybookings() {
       const room = await axios.get(`https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/rooms/${roomId}`);
       const roomCapacity =
         parseInt(room.data.capacity, 10) + parseInt(seat, 10);
-      const newCapacity = roomCapacity.toString();
+      const leatestCapacity = roomCapacity.toString();
       const updatedRoom = await axios.put(
         `https://roomrover-sever-hz75sv5qr-mehedi-hasans-hrid.vercel.app/update/${roomId}`,
         {
-          capacity: newCapacity,
+          capacity: leatestCapacity,
         }
       );
       const remaining = bookings.filter((booking) => booking._id !== bookingId);
@@ -234,7 +234,7 @@ export default function Mybookings() {
       <section className="flex items-center mb-8 lg:mb-14">
         <div className="justify-center flex items-center flex-col gap-8 max-w-7xl px-6 py-6 lg:py-12 mx-auto bg-gray-100 rounded-md shadow-md dark:border-[#253246] dark:bg-[#253246] lg:px-10">
           {bookings.length === 0 ? (
-            <div className="w-full text-center py-5 dark:bg-gray-200 dark:text-gray-900 text-lg md:text-2xl font-semibold">
+            <div className="w-full text-center py-5 dark:bg-gray-200 dark:text-gray-900 text-lg md:text-3xl font-semibold">
               Your booking is empty.
             </div>
           ) : (
